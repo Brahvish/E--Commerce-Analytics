@@ -11,7 +11,7 @@ A modern, neomorphic E-Commerce Analytics Dashboard built with a Node.js/Express
 
 ## Project Structure
 
-* `/ui/` - Contains the frontend HTML templates (`light_mode.html` and `dark_mode.html`).
+* `/ui/` - Contains the frontend HTML template (`index.html`) which fully supports both light and dark modes natively.
 * `server.js` - The main Express application that serves the API and static UI files.
 * `dataService.js` - The mock data provider simulating database queries.
 
@@ -44,8 +44,7 @@ node server.js
 ```
 
 The server will start on port `3000`. You can view the application in your browser at:
-* **Light Mode:** [http://localhost:3000/light_mode.html](http://localhost:3000/light_mode.html)
-* **Dark Mode:** [http://localhost:3000/dark_mode.html](http://localhost:3000/dark_mode.html)
+* **Dashboard (Light & Dark Themes):** [http://localhost:3000/index.html](http://localhost:3000/index.html)
 
 ## API Endpoints
 
