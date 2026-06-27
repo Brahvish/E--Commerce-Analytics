@@ -1,0 +1,555 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Shoplytics - E-Commerce Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#b0c6ff",
+                        "accent-orange": "#f48c06",
+                        "surface-container-low": "#1e222e",
+                        "on-tertiary-fixed-variant": "#90e9a6",
+                        "surface-container-lowest": "#171b27",
+                        "background": "#171b27",
+                        "surface-container": "#2c303c",
+                        "tertiary-container": "#005027",
+                        "on-tertiary-container": "#90e9a6",
+                        "neo-light": "#252a3a",
+                        "surface-variant": "#424653",
+                        "on-error": "#ffffff",
+                        "on-surface": "#ebf1ff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#c4c7c9",
+                        "on-primary-fixed": "#d9e2ff",
+                        "error-container": "#93000a",
+                        "canvas-bg": "#12151e",
+                        "on-tertiary-fixed": "#9df6b2",
+                        "inverse-surface": "#eaedfd",
+                        "accent-purple": "#b79ced",
+                        "tertiary": "#81d998",
+                        "on-secondary-fixed-variant": "#c2c6d6",
+                        "primary-fixed": "#00429a",
+                        "on-surface-variant": "#c2c6d6",
+                        "tertiary-fixed": "#005027",
+                        "on-primary-fixed-variant": "#b0c6ff",
+                        "on-error-container": "#ffdad6",
+                        "neo-shadow": "#0d1017",
+                        "primary": "#b0c6ff",
+                        "on-tertiary": "#003919",
+                        "secondary-fixed": "#444749",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#e1e3e5",
+                        "surface-bright": "#2c303c",
+                        "on-primary-container": "#d9e2ff",
+                        "outline": "#8e9099",
+                        "on-background": "#ebf1ff",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c2c6d6",
+                        "surface-bg": "#171b27",
+                        "inverse-on-surface": "#171b27",
+                        "surface-tint": "#b0c6ff",
+                        "surface-container-high": "#323644",
+                        "secondary": "#c2c6d6",
+                        "surface-dim": "#171b27",
+                        "surface": "#171b27",
+                        "outline-variant": "#424653",
+                        "primary-container": "#00429a",
+                        "surface-container-highest": "#3d414f",
+                        "tertiary-fixed-dim": "#81d998",
+                        "secondary-container": "#444749"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "2rem",
+                        "gutter-grid": "1.5rem",
+                        "padding-card": "1.5rem",
+                        "nav-width": "16rem",
+                        "stack-gap": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "30px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #12151e;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+        /* Neomorphic Shadows - Dark Theme */
+        .neo-extruded {
+            box-shadow: 8px 8px 16px #0d1017, -4px -4px 12px #222736;
+        }
+        .neo-inset {
+            box-shadow: inset 6px 6px 12px #0d1017, inset -3px -3px 8px #222736;
+        }
+        .neo-button-active:active {
+            box-shadow: inset 4px 4px 8px #0d1017, inset -2px -2px 6px #222736;
+            transform: scale(0.98);
+        }
+        .neo-nav-active {
+            box-shadow: inset 4px 4px 8px #0d1017, inset -2px -2px 6px #222736;
+        }
+        /* Color accents */
+        .accent-glow {
+            filter: drop-shadow(0 0 8px rgba(176, 198, 255, 0.4));
+        }
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #171b27;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2c303c;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #424653;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-on-background overflow-x-hidden">
+<!-- Side Navigation Bar -->
+<nav class="w-64 h-screen fixed left-0 top-0 bg-surface-container-lowest p-6 flex flex-col gap-6 neo-extruded z-50 h-full">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 neo-extruded rounded-xl flex items-center justify-center bg-primary-container">
+<span class="material-symbols-outlined text-primary text-3xl">shopping_cart</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Shoplytics</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">E-Commerce Analytics</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<!-- Active: Overview -->
+<a class="neo-nav-active flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold transition-all" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-body-md text-body-md">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-body-md text-body-md">Sales</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">Products</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+<span class="font-body-md text-body-md">Regions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">Returns</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">timeline</span>
+<span class="font-body-md text-body-md">Forecasting</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</div>
+<button class="neo-extruded neo-button-active flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-surface-container-lowest text-on-surface hover:text-primary transition-all mt-auto border border-white/5">
+<span class="material-symbols-outlined">download</span>
+<span class="font-body-md text-body-md font-bold">Export Report</span>
+</button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-8 min-h-screen">
+<!-- Top Navigation -->
+<header class="flex justify-between items-center mb-10">
+<div class="flex-1 max-w-md">
+<div class="neo-inset rounded-full px-6 py-3 flex items-center gap-3 bg-surface-container-lowest">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder-on-surface-variant/50 text-on-surface" placeholder="Search for insights, metrics..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="w-12 h-12 neo-extruded neo-button-active rounded-full flex items-center justify-center bg-surface-container-lowest relative border border-white/5">
+<span class="material-symbols-outlined text-on-surface">notifications</span>
+<div class="absolute top-3 right-3 w-2.5 h-2.5 bg-primary rounded-full border-2 border-surface-container-lowest"></div>
+</button>
+<button class="w-12 h-12 neo-extruded neo-button-active rounded-full flex items-center justify-center bg-surface-container-lowest border border-white/5">
+<span class="material-symbols-outlined text-on-surface">dark_mode</span>
+</button>
+</div>
+<div class="neo-extruded rounded-full pl-2 pr-4 py-2 flex items-center gap-3 bg-surface-container-lowest border border-white/5">
+<img alt="John Doe" class="w-10 h-10 rounded-full border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxW1e4piI1NbPg71iN7dTD6OL9e3BPWdx5Q4m4LTskBTyZYNktHWCBL982Uag8zHNfaAdn6Fx7t9NI3kwiBzP01La0sLiAYl3HuZRmcV5IxFroTBfLlWloZaHVJl5q-6XykKoAhqQj-6SVSqVWCjo8czCxGUUuuHhBf6ImIge-BSXwVzOs2rGEoo3XTr6ZNZUVJYoaxpjC3YCRnWnsJj9N9OrCLzvjydKmmzghYiw4u_SsCpSXhdME">
+<div>
+<p class="font-body-md text-body-md font-bold leading-tight text-on-surface">John Doe</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Admin</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant ml-2">expand_more</span>
+</div>
+</div>
+</header>
+<!-- KPI Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<!-- Total Revenue -->
+<div class="neo-extruded bg-surface-container-lowest p-6 rounded-3xl relative overflow-hidden border border-white/5">
+<div class="flex justify-between items-start mb-4">
+<div class="neo-inset p-2 rounded-xl bg-surface-container">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div class="neo-inset px-3 py-1 rounded-full text-label-sm text-on-surface-variant flex items-center gap-1 bg-surface-container-lowest">
+<span class="">This Month</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface-variant mb-1">Total Revenue</h3>
+<p class="font-headline-lg text-headline-lg text-on-surface mb-2">$458,230</p>
+<div class="flex items-center gap-1 text-tertiary font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="">12.5% vs last month</span>
+</div>
+<!-- Subtle sparkline visualization -->
+<div class="absolute bottom-0 right-0 w-1/2 h-16 opacity-20">
+<svg class="w-full h-full" viewBox="0 0 100 40">
+<path d="M0,35 Q20,30 40,35 T80,10 T100,20" fill="none" stroke="#b0c6ff" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Total Profit -->
+<div class="neo-extruded bg-surface-container-lowest p-6 rounded-3xl border border-white/5">
+<div class="neo-inset p-2 rounded-xl bg-surface-container w-fit mb-4">
+<span class="material-symbols-outlined text-tertiary">payments</span>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface-variant mb-1">Total Profit</h3>
+<p class="font-headline-lg text-headline-lg text-on-surface mb-2">$96,846</p>
+<div class="flex items-center gap-1 text-tertiary font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="">8.4% vs last month</span>
+</div>
+</div>
+<!-- Total Orders -->
+<div class="neo-extruded bg-surface-container-lowest p-6 rounded-3xl border border-white/5">
+<div class="neo-inset p-2 rounded-xl bg-surface-container w-fit mb-4">
+<span class="material-symbols-outlined text-primary">shopping_bag</span>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface-variant mb-1">Total Orders</h3>
+<p class="font-headline-lg text-headline-lg text-on-surface mb-2">2,345</p>
+<div class="flex items-center gap-1 text-tertiary font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="">15.2% vs last month</span>
+</div>
+</div>
+<!-- Avg. Order Value -->
+<div class="neo-extruded bg-surface-container-lowest p-6 rounded-3xl border border-white/5">
+<div class="neo-inset p-2 rounded-xl bg-surface-container w-fit mb-4">
+<span class="material-symbols-outlined text-accent-orange">insights</span>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface-variant mb-1">Avg. Order Value</h3>
+<p class="font-headline-lg text-headline-lg text-on-surface mb-2">$195.60</p>
+<div class="flex items-center gap-1 text-tertiary font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="">4.1% vs last month</span>
+</div>
+</div>
+</div>
+<!-- Middle Section: Main Charts -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<!-- Sales Overview Chart -->
+<div class="lg:col-span-2 neo-extruded bg-surface-container-lowest p-8 rounded-[32px] border border-white/5">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Sales Overview</h2>
+</div>
+<div class="flex gap-3">
+<div class="neo-inset px-4 py-2 rounded-xl text-body-md font-bold text-on-surface-variant flex items-center gap-2 bg-surface-container-lowest">
+<span class="">Monthly</span>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+<button class="w-10 h-10 neo-extruded neo-button-active flex items-center justify-center rounded-xl bg-surface-container-lowest border border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+</div>
+<div class="h-64 relative">
+<!-- Placeholder Chart Canvas -->
+<div class="absolute inset-0 flex items-end justify-between px-4">
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/20 h-32 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-surface-container-lowest accent-glow"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant">Dec</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/20 h-48 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-surface-container-lowest accent-glow"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant">Jan</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/20 h-36 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-surface-container-lowest accent-glow"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant">Feb</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/20 h-40 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-surface-container-lowest accent-glow"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant">Mar</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/20 h-52 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-surface-container-lowest accent-glow"></div>
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-primary text-on-primary text-[10px] rounded font-bold">$112K</div>
+</div>
+<span class="text-label-sm text-on-surface-variant">Apr</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/20 h-44 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-surface-container-lowest accent-glow"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant">May</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sales by Category Chart -->
+<div class="neo-extruded bg-surface-container-lowest p-8 rounded-[32px] border border-white/5">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Sales by Category</h2>
+<button class="w-10 h-10 neo-extruded neo-button-active flex items-center justify-center rounded-xl bg-surface-container-lowest border border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col items-center">
+<div class="relative w-48 h-48 mb-6">
+<div class="w-full h-full rounded-full neo-extruded flex items-center justify-center bg-surface-container-lowest border border-white/5">
+<div class="w-32 h-32 rounded-full neo-inset flex flex-col items-center justify-center">
+<span class="text-label-sm text-on-surface-variant">Total</span>
+<span class="font-body-lg text-body-lg text-on-surface">$458,230</span>
+</div>
+</div>
+<!-- Rings for dark theme -->
+<div class="absolute inset-0 pointer-events-none rounded-full border-[12px] border-primary border-t-transparent border-l-transparent rotate-45 opacity-30"></div>
+<div class="absolute inset-0 pointer-events-none rounded-full border-[12px] border-tertiary border-b-transparent border-r-transparent -rotate-12 opacity-30"></div>
+</div>
+<div class="w-full space-y-3">
+<div class="flex justify-between items-center text-body-md">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-on-surface-variant">Electronics</span>
+</div>
+<span class="font-bold text-on-surface">32%</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="text-on-surface-variant">Fashion</span>
+</div>
+<span class="font-bold text-on-surface">24%</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-accent-orange"></div>
+<span class="text-on-surface-variant">Home &amp; Living</span>
+</div>
+<span class="font-bold text-on-surface">18%</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-accent-purple"></div>
+<span class="text-on-surface-variant">Beauty</span>
+</div>
+<span class="font-bold text-on-surface">12%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Detailed Insights -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Top Products -->
+<div class="neo-extruded bg-surface-container-lowest p-8 rounded-[32px] border border-white/5">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Top Products</h2>
+<button class="w-8 h-8 neo-extruded rounded-lg flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 neo-inset rounded-xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">headphones</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-bold text-on-surface">Wireless Headphones</p>
+<p class="text-label-sm text-on-surface-variant">Electronics</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">$45,231</p>
+<p class="text-label-sm text-tertiary font-bold">$12,432 Profit</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 neo-inset rounded-xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">watch</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-bold text-on-surface">Smart Watch Series 8</p>
+<p class="text-label-sm text-on-surface-variant">Electronics</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">$38,921</p>
+<p class="text-label-sm text-tertiary font-bold">$10,231 Profit</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 neo-inset rounded-xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">backpack</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-bold text-on-surface">Leather Backpack</p>
+<p class="text-label-sm text-on-surface-variant">Fashion</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">$28,421</p>
+<p class="text-label-sm text-tertiary font-bold">$8,112 Profit</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Customers -->
+<div class="neo-extruded bg-surface-container-lowest p-8 rounded-[32px] border border-white/5">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Top Customers</h2>
+<button class="w-8 h-8 neo-extruded rounded-lg flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<img alt="Robert Fox" class="w-10 h-10 rounded-full border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsJ8WQ-JdJe4Fd5nTP7ZE3pkATfnH-fYRF9B9gsF3F59qVAg9uSCuf_RV9u0po8eVXid_86DDb_2UMxj0qgxPszXl2RlruoGkgzuPYVPPTLkD3kDBhQIi0zhNM_v-HymW-rUTZXAEizF9DlFzWip91JZAHalGYXW2kUZIsBe2229LoO9hLgLpdeLD86cP2uWIurBCRgGduO3Sr2XiyTCul1KdPQbPkgb3n7KoMqVpuaDnC912ltA2q">
+<div class="flex-1">
+<p class="font-body-md font-bold text-on-surface">Robert Fox</p>
+<p class="text-label-sm text-on-surface-variant">18 Orders</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">$4,432</p>
+<p class="text-label-sm text-on-surface-variant">Total Spent</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img alt="Cameron Williamson" class="w-10 h-10 rounded-full border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1BbRGVXa7r1E9a2bsaYI0XR8sBzYoq4XEaQQ79v3pGaxYpTaHoYbuLyc9gEqNYkDhKge7G-I7OeBkjPc6r0jiC-1QNTFehwj4Ahc_BqGb-VPq7Er0YoK6Y5WDluedHCJvuh34m9dYgSttKKjFSqCURCIESxqv5QDjqJBROhhf0MlZQaGypwZLP18nIS9DMbxejBHbrRHeo11jxyyVb6h7lhXQMf3_FnnTXDw21kb7VfnJ5QkMYDlq">
+<div class="flex-1">
+<p class="font-body-md font-bold text-on-surface">Cameron Williamson</p>
+<p class="text-label-sm text-on-surface-variant">15 Orders</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">$3,921</p>
+<p class="text-label-sm text-on-surface-variant">Total Spent</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img alt="Brooklyn Simmons" class="w-10 h-10 rounded-full border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmvvA_15RHl0VQXOHf8mQX2UNDSJSaSUFZjgfnZ5Tl52STm5K_dOcqG5j7UYb25BfSi_5y5zUZiF1RtsNQUhXieQw87V4WC1R2VIhna6E6iF8kwSk6ftJOYKKhIi2nMv1Qc-GkGmI8pfPXtUT4BRoPSHz0Dd1eZwRsKURG7VkIWdSPBNE8LllWvjgSXMi9ksUvUsawytrFkT4lPqf7l-4GPNPtNBMDlp2uwokLjIBpYtFFxkpJM06N">
+<div class="flex-1">
+<p class="font-body-md font-bold text-on-surface">Brooklyn Simmons</p>
+<p class="text-label-sm text-on-surface-variant">12 Orders</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">$3,421</p>
+<p class="text-label-sm text-on-surface-variant">Total Spent</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sales by Region -->
+<div class="neo-extruded bg-surface-container-lowest p-8 rounded-[32px] border border-white/5">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Sales by Region</h2>
+<button class="w-8 h-8 neo-extruded rounded-lg flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="relative h-48 mb-6">
+<!-- Placeholder Map Dark -->
+<div class="w-full h-full neo-inset rounded-2xl overflow-hidden bg-surface-container-low flex items-center justify-center">
+<div class="opacity-40 p-4">
+<img alt="World Map" class="w-full h-full object-contain filter invert opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrpNHrU2EAWQI_7ozM1dl0v-CsJx5gkO345aQDiZgeHtGOKPpivKLzzOmluyjziaIpqbo1OObkyZxIzmnunia8DH_SJUbKZ1IQ-_3LHYxnEn3vHrw1QhyPnlqBlMHXCF1sy8etOAty0B2B0f1X1rP-srH3xBGixLibk13U2kcUx2KiBsh_w6LbAF45Dwilw422mEHf3OLhVAHo3bwFcLHjk8oh5leZW5hXgZWz2biM4CcHCTdH0-d4">
+</div>
+<!-- Intensity Scale Dark -->
+<div class="absolute bottom-4 left-4 flex flex-col gap-1">
+<div class="w-2 h-20 bg-gradient-to-t from-primary-container to-primary rounded-full"></div>
+<div class="flex justify-between w-full text-[8px] text-on-surface-variant">
+<span class="">Low</span>
+<span class="">High</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-3 neo-inset rounded-xl text-center bg-surface-container-lowest">
+<p class="text-label-sm text-on-surface-variant">North America</p>
+<p class="font-body-md font-bold text-on-surface">42%</p>
+</div>
+<div class="p-3 neo-inset rounded-xl text-center bg-surface-container-lowest">
+<p class="text-label-sm text-on-surface-variant">Europe</p>
+<p class="font-body-md font-bold text-on-surface">28%</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.querySelectorAll('.neo-button-active').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.remove('neo-extruded');
+                button.classList.add('neo-inset');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('neo-inset');
+                button.classList.add('neo-extruded');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('neo-inset');
+                button.classList.add('neo-extruded');
+            });
+        });
+    </script>
+
+
+</body></html>
