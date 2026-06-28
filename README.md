@@ -5,13 +5,16 @@ A modern, neomorphic E-Commerce Analytics Dashboard built with a Node.js/Express
 ## Features
 
 * **Neomorphic UI:** Beautiful, soft UI design using TailwindCSS.
-* **Light/Dark Mode:** Seamless theme switching built right into the frontend.
+* **Single Page Application (SPA):** Seamless navigation between the Overview and Sales dashboard without page reloads.
+* **Light/Dark Mode:** Dynamic theme switching built into the SPA shell that applies across all pages automatically.
 * **REST API:** A fully functional Express.js backend serving dashboard metrics (KPIs, Charts, Top Products, etc.).
 * **Dynamic Data Simulation:** Uses a structured data service to simulate a real database.
 
 ## Project Structure
 
-* `/ui/` - Contains the frontend HTML template (`index.html`) which fully supports both light and dark modes natively.
+* `/ui/index.html` - The main SPA shell containing the sidebar, header, and theme logic.
+* `/ui/pages/` - Contains the HTML partials for each dashboard view (`overview.html`, `sales.html`).
+* `/ui/js/app.js` - Client-side router and API data fetching logic.
 * `server.js` - The main Express application that serves the API and static UI files.
 * `dataService.js` - The mock data provider simulating database queries.
 
