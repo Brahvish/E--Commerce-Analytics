@@ -1,0 +1,339 @@
+
+<!-- Top Navigation -->
+<header class="flex justify-between items-center mb-10">
+<div class="flex-1 max-w-md">
+<div class="neo-inset rounded-full px-6 py-3 flex items-center gap-3 bg-background">
+<span class="material-symbols-outlined text-secondary">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder-secondary/50" placeholder="Search for insights, metrics..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="w-12 h-12 neo-extruded neo-button-active rounded-full flex items-center justify-center bg-background relative">
+<span class="material-symbols-outlined">notifications</span>
+<div class="absolute top-3 right-3 w-2 h-2 bg-primary rounded-full"></div>
+</button>
+<button class="w-12 h-12 neo-button-active rounded-full flex items-center justify-center bg-background neo-extruded">
+<span class="material-symbols-outlined">light_mode</span>
+</button>
+</div>
+<div class="neo-extruded rounded-full pl-2 pr-4 py-2 flex items-center gap-3 bg-background">
+<img class="w-10 h-10 rounded-full neo-inset" data-alt="Professional headshot of a young male administrator named John Doe, wearing a clean white shirt, against a soft neutral studio background with gentle high-key lighting for a polished corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxW1e4piI1NbPg71iN7dTD6OL9e3BPWdx5Q4m4LTskBTyZYNktHWCBL982Uag8zHNfaAdn6Fx7t9NI3kwiBzP01La0sLiAYl3HuZRmcV5IxFroTBfLlWloZaHVJl5q-6XykKoAhqQj-6SVSqVWCjo8czCxGUUuuHhBf6ImIge-BSXwVzOs2rGEoo3XTr6ZNZUVJYoaxpjC3YCRnWnsJj9N9OrCLzvjydKmmzghYiw4u_SsCpSXhdME">
+<div>
+<p class="font-body-md text-body-md font-bold leading-tight">John Doe</p>
+<p class="font-label-sm text-label-sm text-secondary">Admin</p>
+</div>
+<span class="material-symbols-outlined text-secondary ml-2">expand_more</span>
+</div>
+</div>
+</header>
+<!-- KPI Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<!-- Total Revenue -->
+<div class="neo-extruded bg-background p-6 rounded-3xl relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div class="neo-inset p-2 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div class="neo-inset px-3 py-1 rounded-full text-label-sm text-secondary flex items-center gap-1">
+<span class="">This Month</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+</div>
+<h3 class="font-body-md text-body-md text-secondary mb-1">Total Revenue</h3>
+<p class="font-headline-lg text-headline-lg text-on-background mb-2">$458,230</p>
+<div class="flex items-center gap-1 text-tertiary font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="">12.5% vs last month</span>
+</div>
+<!-- Subtle sparkline visualization -->
+<div class="absolute bottom-0 right-0 w-1/2 h-16 opacity-30">
+<svg class="w-full h-full" viewBox="0 0 100 40">
+<path d="M0,35 Q20,30 40,35 T80,10 T100,20" fill="none" stroke="#0056c5" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Total Profit -->
+<div class="neo-extruded bg-background p-6 rounded-3xl">
+<div class="neo-inset p-2 rounded-xl bg-surface-container-low w-fit mb-4">
+<span class="material-symbols-outlined text-tertiary">payments</span>
+</div>
+<h3 class="font-body-md text-body-md text-secondary mb-1">Total Profit</h3>
+<p class="font-headline-lg text-headline-lg text-on-background mb-2">$96,846</p>
+<div class="flex items-center gap-1 text-tertiary font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="">8.4% vs last month</span>
+</div>
+</div>
+<!-- Total Orders -->
+<div class="neo-extruded bg-background p-6 rounded-3xl">
+<div class="neo-inset p-2 rounded-xl bg-surface-container-low w-fit mb-4">
+<span class="material-symbols-outlined text-primary-container">shopping_bag</span>
+</div>
+<h3 class="font-body-md text-body-md text-secondary mb-1">Total Orders</h3>
+<p class="font-headline-lg text-headline-lg text-on-background mb-2">2,345</p>
+<div class="flex items-center gap-1 text-tertiary font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="">15.2% vs last month</span>
+</div>
+</div>
+<!-- Avg. Order Value -->
+<div class="neo-extruded bg-background p-6 rounded-3xl">
+<div class="neo-inset p-2 rounded-xl bg-surface-container-low w-fit mb-4">
+<span class="material-symbols-outlined text-[#f48c06]">insights</span>
+</div>
+<h3 class="font-body-md text-body-md text-secondary mb-1">Avg. Order Value</h3>
+<p class="font-headline-lg text-headline-lg text-on-background mb-2">$195.60</p>
+<div class="flex items-center gap-1 text-tertiary font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="">4.1% vs last month</span>
+</div>
+</div>
+</div>
+<!-- Middle Section: Main Charts -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<!-- Sales Overview Chart -->
+<div class="lg:col-span-2 neo-extruded bg-background p-8 rounded-[32px]">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold">Sales Overview</h2>
+</div>
+<div class="flex gap-3">
+<div class="neo-inset px-4 py-2 rounded-xl text-body-md font-bold text-secondary flex items-center gap-2">
+<span class="">Monthly</span>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+<button class="w-10 h-10 neo-extruded neo-button-active flex items-center justify-center rounded-xl bg-background">
+<span class="material-symbols-outlined text-secondary">more_vert</span>
+</button>
+</div>
+</div>
+<div class="h-64 relative">
+<!-- Placeholder Chart Canvas -->
+<div class="absolute inset-0 flex items-end justify-between px-4">
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/10 h-32 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background accent-glow"></div>
+</div>
+<span class="text-label-sm text-secondary">Dec</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/10 h-48 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background accent-glow"></div>
+</div>
+<span class="text-label-sm text-secondary">Jan</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/10 h-36 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background accent-glow"></div>
+</div>
+<span class="text-label-sm text-secondary">Feb</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/10 h-40 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background accent-glow"></div>
+</div>
+<span class="text-label-sm text-secondary">Mar</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/10 h-52 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background accent-glow"></div>
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-primary text-white text-[10px] rounded font-bold">$112K</div>
+</div>
+<span class="text-label-sm text-secondary">Apr</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full neo-inset rounded-t-xl bg-primary/10 h-44 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background accent-glow"></div>
+</div>
+<span class="text-label-sm text-secondary">May</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sales by Category Chart -->
+<div class="neo-extruded bg-background p-8 rounded-[32px]">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-md text-headline-md font-bold">Sales by Category</h2>
+<button class="w-10 h-10 neo-extruded neo-button-active flex items-center justify-center rounded-xl bg-background">
+<span class="material-symbols-outlined text-secondary">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col items-center">
+<div class="relative w-48 h-48 mb-6">
+<!-- Custom Donut CSS -->
+<div class="w-full h-full rounded-full neo-extruded flex items-center justify-center bg-background">
+<div class="w-32 h-32 rounded-full neo-inset flex flex-col items-center justify-center">
+<span class="text-label-sm text-secondary">Total</span>
+<span class="font-body-lg text-body-lg text-on-background">$458,230</span>
+</div>
+</div>
+<!-- Color Rings Overlay simulation -->
+<div class="absolute inset-0 pointer-events-none rounded-full border-[12px] border-primary border-t-transparent border-l-transparent rotate-45 opacity-20"></div>
+<div class="absolute inset-0 pointer-events-none rounded-full border-[12px] border-tertiary border-b-transparent border-r-transparent -rotate-12 opacity-20"></div>
+</div>
+<div class="w-full space-y-3">
+<div class="flex justify-between items-center text-body-md">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-secondary">Electronics</span>
+</div>
+<span class="font-bold">32%</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="text-secondary">Fashion</span>
+</div>
+<span class="font-bold">24%</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-[#f48c06]"></div>
+<span class="text-secondary">Home &amp; Living</span>
+</div>
+<span class="font-bold">18%</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-[#9b5de5]"></div>
+<span class="text-secondary">Beauty</span>
+</div>
+<span class="font-bold">12%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Detailed Insights -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Top Products -->
+<div class="neo-extruded bg-background p-8 rounded-[32px]">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md font-bold">Top Products</h2>
+<button class="w-8 h-8 neo-extruded rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 neo-inset rounded-xl bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">headphones</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-bold">Wireless Headphones</p>
+<p class="text-label-sm text-secondary">Electronics</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold">$45,231</p>
+<p class="text-label-sm text-tertiary font-bold">$12,432 Profit</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 neo-inset rounded-xl bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">watch</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-bold">Smart Watch Series 8</p>
+<p class="text-label-sm text-secondary">Electronics</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold">$38,921</p>
+<p class="text-label-sm text-tertiary font-bold">$10,231 Profit</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 neo-inset rounded-xl bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">backpack</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-bold">Leather Backpack</p>
+<p class="text-label-sm text-secondary">Fashion</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold">$28,421</p>
+<p class="text-label-sm text-tertiary font-bold">$8,112 Profit</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Customers -->
+<div class="neo-extruded bg-background p-8 rounded-[32px]">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md font-bold">Top Customers</h2>
+<button class="w-8 h-8 neo-extruded rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full neo-inset" data-alt="Close up portrait of a friendly man with a neat beard and professional attire, isolated against a soft-focus office background in high-key daylight lighting, conveying success and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsJ8WQ-JdJe4Fd5nTP7ZE3pkATfnH-fYRF9B9gsF3F59qVAg9uSCuf_RV9u0po8eVXid_86DDb_2UMxj0qgxPszXl2RlruoGkgzuPYVPPTLkD3kDBhQIi0zhNM_v-HymW-rUTZXAEizF9DlFzWip91JZAHalGYXW2kUZIsBe2229LoO9hLgLpdeLD86cP2uWIurBCRgGduO3Sr2XiyTCul1KdPQbPkgb3n7KoMqVpuaDnC912ltA2q">
+<div class="flex-1">
+<p class="font-body-md font-bold">Robert Fox</p>
+<p class="text-label-sm text-secondary">18 Orders</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold">$4,432</p>
+<p class="text-label-sm text-secondary">Total Spent</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full neo-inset" data-alt="Portrait of a young professional woman with glasses and a bright smile, captured in soft morning light within a minimalist workspace environment, presenting a warm and competent professional persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1BbRGVXa7r1E9a2bsaYI0XR8sBzYoq4XEaQQ79v3pGaxYpTaHoYbuLyc9gEqNYkDhKge7G-I7OeBkjPc6r0jiC-1QNTFehwj4Ahc_BqGb-VPq7Er0YoK6Y5WDluedHCJvuh34m9dYgSttKKjFSqCURCIESxqv5QDjqJBROhhf0MlZQaGypwZLP18nIS9DMbxejBHbrRHeo11jxyyVb6h7lhXQMf3_FnnTXDw21kb7VfnJ5QkMYDlq">
+<div class="flex-1">
+<p class="font-body-md font-bold">Cameron Williamson</p>
+<p class="text-label-sm text-secondary">15 Orders</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold">$3,921</p>
+<p class="text-label-sm text-secondary">Total Spent</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full neo-inset" data-alt="Clean and modern headshot of a middle-aged businessman with salt-and-pepper hair, wearing a structured blazer, set against a pristine white studio background with soft directional lighting to emphasize professional confidence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmvvA_15RHl0VQXOHf8mQX2UNDSJSaSUFZjgfnZ5Tl52STm5K_dOcqG5j7UYb25BfSi_5y5zUZiF1RtsNQUhXieQw87V4WC1R2VIhna6E6iF8kwSk6ftJOYKKhIi2nMv1Qc-GkGmI8pfPXtUT4BRoPSHz0Dd1eZwRsKURG7VkIWdSPBNE8LllWvjgSXMi9ksUvUsawytrFkT4lPqf7l-4GPNPtNBMDlp2uwokLjIBpYtFFxkpJM06N">
+<div class="flex-1">
+<p class="font-body-md font-bold">Brooklyn Simmons</p>
+<p class="text-label-sm text-secondary">12 Orders</p>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold">$3,421</p>
+<p class="text-label-sm text-secondary">Total Spent</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sales by Region -->
+<div class="neo-extruded bg-background p-8 rounded-[32px]">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-headline-md text-headline-md font-bold">Sales by Region</h2>
+<button class="w-8 h-8 neo-extruded rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="relative h-48 mb-6">
+<!-- Placeholder Map -->
+<div class="w-full h-full neo-inset rounded-2xl overflow-hidden bg-surface-container-low flex items-center justify-center">
+<div class="opacity-30 p-4">
+<img class="w-full h-full object-contain" data-alt="A stylized minimalist world map vector illustration on a soft light-blue background. The map uses flat design with subtle neomorphic elevations on major landmasses. Key sales regions are highlighted with soft glowing blue circular hotspots, creating a professional data visualization aesthetic for a dashboard." data-location="World" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrpNHrU2EAWQI_7ozM1dl0v-CsJx5gkO345aQDiZgeHtGOKPpivKLzzOmluyjziaIpqbo1OObkyZxIzmnunia8DH_SJUbKZ1IQ-_3LHYxnEn3vHrw1QhyPnlqBlMHXCF1sy8etOAty0B2B0f1X1rP-srH3xBGixLibk13U2kcUx2KiBsh_w6LbAF45Dwilw422mEHf3OLhVAHo3bwFcLHjk8oh5leZW5hXgZWz2biM4CcHCTdH0-d4">
+</div>
+<!-- Intensity Scale -->
+<div class="absolute bottom-4 left-4 flex flex-col gap-1">
+<div class="w-2 h-20 bg-gradient-to-t from-primary-fixed-dim to-primary rounded-full"></div>
+<div class="flex justify-between w-full text-[8px] text-secondary">
+<span class="">Low</span>
+<span class="">High</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-3 neo-inset rounded-xl text-center">
+<p class="text-label-sm text-secondary">North America</p>
+<p class="font-body-md font-bold">42%</p>
+</div>
+<div class="p-3 neo-inset rounded-xl text-center">
+<p class="text-label-sm text-secondary">Europe</p>
+<p class="font-body-md font-bold">28%</p>
+</div>
+</div>
+</div>
+</div>
