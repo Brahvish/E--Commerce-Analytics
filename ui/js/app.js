@@ -1,12 +1,41 @@
 // app.js - SPA Router and Logic
 
+const pageCache = {};
+const apiCache = new Map();
+
+// Apply saved theme immediately to prevent flash of wrong theme
+if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark');
+}
+
+async function cachedFetch(url, ttlMs = 60000) {
+    const cached = apiCache.get(url);
+    if (cached && Date.now() - cached.time < ttlMs) {
+        return cached.data;
+    }
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`API error: ${res.status}`);
+    const data = await res.json();
+    apiCache.set(url, { data, time: Date.now() });
+    return data;
+}
+
 async function loadPage(page) {
     const contentDiv = document.getElementById('app-content');
+
+    // Validate page name: only lowercase letters and hyphens (prevents path traversal)
+    if (!/^[a-z-]+$/.test(page)) {
+        contentDiv.textContent = 'Page not found';
+        return;
+    }
+
     try {
-        const response = await fetch(`pages/${page}.html`);
-        if (!response.ok) throw new Error('Page not found');
-        const html = await response.text();
-        contentDiv.innerHTML = html;
+        if (!pageCache[page]) {
+            const response = await fetch(`pages/${page}.html`);
+            if (!response.ok) throw new Error('Page not found');
+            pageCache[page] = await response.text();
+        }
+        contentDiv.innerHTML = pageCache[page];
         
         // Re-initialize theme toggle button since it is recreated when we swap pages
         initThemeToggle();
@@ -21,7 +50,7 @@ async function loadPage(page) {
         }
 
     } catch (e) {
-        contentDiv.innerHTML = '<h2 class="text-error font-headline-lg">Error loading page</h2>';
+        contentDiv.textContent = 'Error loading page';
         console.error(e);
     }
 }
@@ -84,49 +113,33 @@ function initThemeToggle() {
 
 // Data Fetching and Populating for Overview
 async function initOverview() {
-    try {
-        const [kpiRes, salesRes, productsRes] = await Promise.all([
-            fetch('http://localhost:3000/api/kpis'),
-            fetch('http://localhost:3000/api/sales-overview'),
-            fetch('http://localhost:3000/api/top-products')
-        ]);
-        
-        const kpis = await kpiRes.json();
-        // The HTML structure has these hardcoded for now, but to actually update them:
-        // we would select the elements by ID or class.
-        // For brevity in this refactor, we'll assume the API works and logs it.
-        // In a real app we'd map kpis.totalRevenue.formatted to a DOM element.
-        console.log("Overview Data Loaded:", { kpis });
-
-    } catch(e) {
-        console.error("Error loading Overview data", e);
-    }
+    // Overview page currently uses static HTML content
+    // Data binding will be implemented when overview elements get stable IDs
+    console.log("Overview page loaded");
 }
 
 // Data Fetching and Populating for Sales
 async function initSales() {
     try {
-        const [kpisRes, chartRes, catRes, prodRes, custRes, regRes] = await Promise.all([
-            fetch('http://localhost:3000/api/kpis'),
-            fetch('http://localhost:3000/api/sales-overview'),
-            fetch('http://localhost:3000/api/sales-by-category'),
-            fetch('http://localhost:3000/api/top-products'),
-            fetch('http://localhost:3000/api/top-customers'),
-            fetch('http://localhost:3000/api/sales-by-region')
+        const [kpis] = await Promise.all([
+            cachedFetch('/api/kpis'),
+            cachedFetch('/api/sales-overview'),
+            cachedFetch('/api/sales-by-category'),
+            cachedFetch('/api/top-products'),
+            cachedFetch('/api/top-customers'),
+            cachedFetch('/api/sales-by-region')
         ]);
         
-        const kpis = await kpisRes.json();
-        
-        // Populate Sales KPIs
-        const h2Elements = document.querySelectorAll('#app-content h2.font-headline-lg');
-        if (h2Elements.length >= 3) {
-            h2Elements[0].textContent = kpis.totalRevenue.formatted;
-            h2Elements[1].textContent = kpis.totalProfit.formatted;
-            h2Elements[2].textContent = kpis.totalOrders.formatted;
-            if(h2Elements.length >= 4) {
-                h2Elements[3].textContent = kpis.avgOrderValue.formatted;
-            }
-        }
+        // Populate Sales KPIs using stable IDs
+        const revenueEl = document.getElementById('kpi-revenue');
+        const profitEl = document.getElementById('kpi-profit');
+        const ordersEl = document.getElementById('kpi-orders');
+        const avgOrderEl = document.getElementById('kpi-avg-order');
+
+        if (revenueEl) revenueEl.textContent = kpis.totalRevenue.formatted;
+        if (profitEl) profitEl.textContent = kpis.totalProfit.formatted;
+        if (ordersEl) ordersEl.textContent = kpis.totalOrders.formatted;
+        if (avgOrderEl) avgOrderEl.textContent = kpis.avgOrderValue.formatted;
         
         console.log("Sales Data Loaded Successfully");
         
@@ -138,18 +151,18 @@ async function initSales() {
 // Data Fetching and Populating for Products
 async function initProducts() {
     try {
-        const res = await fetch('http://localhost:3000/api/products');
-        if (!res.ok) throw new Error('API Error');
-        const data = await res.json();
+        const data = await cachedFetch('/api/products');
         
-        // Populate Products KPIs
-        const h3Elements = document.querySelectorAll('#app-content h3.font-bold');
-        if (h3Elements.length >= 4) {
-            h3Elements[0].textContent = data.kpis.totalProducts.formatted;
-            h3Elements[1].textContent = data.kpis.activeListings.formatted;
-            h3Elements[2].textContent = data.kpis.lowStock.formatted;
-            h3Elements[3].textContent = data.kpis.outOfStock.formatted;
-        }
+        // Populate Products KPIs using stable IDs
+        const totalProductsEl = document.getElementById('kpi-total-products');
+        const activeListingsEl = document.getElementById('kpi-active-listings');
+        const lowStockEl = document.getElementById('kpi-low-stock');
+        const outOfStockEl = document.getElementById('kpi-out-of-stock');
+
+        if (totalProductsEl) totalProductsEl.textContent = data.kpis.totalProducts.formatted;
+        if (activeListingsEl) activeListingsEl.textContent = data.kpis.activeListings.formatted;
+        if (lowStockEl) lowStockEl.textContent = data.kpis.lowStock.formatted;
+        if (outOfStockEl) outOfStockEl.textContent = data.kpis.outOfStock.formatted;
         
         console.log("Products Data Loaded Successfully", data);
         

@@ -5,7 +5,6 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -377,35 +376,6 @@
             });
         });
 
-        // Theme Toggle logic
-        const buttons = document.querySelectorAll('button .material-symbols-outlined');
-        let themeBtn = null;
-        for (const btn of buttons) {
-            if (btn.textContent.trim() === 'light_mode' || btn.textContent.trim() === 'dark_mode') {
-                themeBtn = btn;
-                break;
-            }
-        }
-        
-        if(themeBtn) {
-            themeBtn.parentElement.addEventListener('click', () => {
-                document.documentElement.classList.toggle('dark');
-                // Optional: toggle icon
-                if (document.documentElement.classList.contains('dark')) {
-                    themeBtn.textContent = 'dark_mode';
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    themeBtn.textContent = 'light_mode';
-                    localStorage.setItem('theme', 'light');
-                }
-            });
-            
-            // Check local storage on load
-            if (localStorage.getItem('theme') === 'dark') {
-                document.documentElement.classList.add('dark');
-                themeBtn.textContent = 'dark_mode';
-            }
-        }
     </script>
 
 
