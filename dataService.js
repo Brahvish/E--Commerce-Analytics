@@ -115,6 +115,39 @@ const adminUser = {
     imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuAxW1e4piI1NbPg71iN7dTD6OL9e3BPWdx5Q4m4LTskBTyZYNktHWCBL982Uag8zHNfaAdn6Fx7t9NI3kwiBzP01La0sLiAYl3HuZRmcV5IxFroTBfLlWloZaHVJl5q-6XykKoAhqQj-6SVSqVWCjo8czCxGUUuuHhBf6ImIge-BSXwVzOs2rGEoo3XTr6ZNZUVJYoaxpjC3YCRnWnsJj9N9OrCLzvjydKmmzghYiw4u_SsCpSXhdME"
 }
 
+const productsData = {
+  kpis: {
+    totalProducts: { value: 1248, formatted: "1,248" },
+    activeListings: { value: 1102, formatted: "1,102" },
+    lowStock: { value: 14, formatted: "14" },
+    outOfStock: { value: 5, formatted: "5" }
+  },
+  performance: {
+    categories: [
+      { name: "Electronics", height: "85%" },
+      { name: "Fashion", height: "60%" },
+      { name: "Home", height: "45%" },
+      { name: "Beauty", height: "30%" },
+      { name: "Sports", height: "70%" }
+    ]
+  },
+  distribution: {
+    totalItems: "1,248",
+    categories: [
+      { name: "Electronics", percentage: "40%" },
+      { name: "Fashion", percentage: "30%" },
+      { name: "Home", percentage: "20%" },
+      { name: "Other", percentage: "10%" }
+    ]
+  },
+  inventory: [
+    { name: "Wireless Headphones", sku: "SKU-ELE-001", category: "Electronics", stock: "145", price: "$129.99", status: "In Stock" },
+    { name: "Smart Watch Series 8", sku: "SKU-ELE-002", category: "Electronics", stock: "89", price: "$399.99", status: "In Stock" },
+    { name: "Leather Backpack", sku: "SKU-FAS-001", category: "Fashion", stock: "12", price: "$89.99", status: "Low Stock" },
+    { name: "Running Shoes", sku: "SKU-SPO-001", category: "Sports", stock: "0", price: "$119.99", status: "Out of Stock" }
+  ]
+};
+
 module.exports = {
   kpis,
   salesOverview,
@@ -122,5 +155,6 @@ module.exports = {
   topProducts,
   topCustomers,
   salesByRegion,
-  adminUser
+  adminUser,
+  productsData
 };

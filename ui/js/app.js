@@ -16,6 +16,8 @@ async function loadPage(page) {
             await initOverview();
         } else if (page === 'sales') {
             await initSales();
+        } else if (page === 'products') {
+            await initProducts();
         }
 
     } catch (e) {
@@ -130,6 +132,29 @@ async function initSales() {
         
     } catch(e) {
         console.error("Error loading Sales data", e);
+    }
+}
+
+// Data Fetching and Populating for Products
+async function initProducts() {
+    try {
+        const res = await fetch('http://localhost:3000/api/products');
+        if (!res.ok) throw new Error('API Error');
+        const data = await res.json();
+        
+        // Populate Products KPIs
+        const h3Elements = document.querySelectorAll('#app-content h3.font-bold');
+        if (h3Elements.length >= 4) {
+            h3Elements[0].textContent = data.kpis.totalProducts.formatted;
+            h3Elements[1].textContent = data.kpis.activeListings.formatted;
+            h3Elements[2].textContent = data.kpis.lowStock.formatted;
+            h3Elements[3].textContent = data.kpis.outOfStock.formatted;
+        }
+        
+        console.log("Products Data Loaded Successfully", data);
+        
+    } catch(e) {
+        console.error("Error loading Products data", e);
     }
 }
 

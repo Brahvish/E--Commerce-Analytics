@@ -41,6 +41,10 @@ app.get('/api/admin-user', (req, res) => {
   res.json(dataService.adminUser);
 });
 
+app.get('/api/products', (req, res) => {
+  res.json(dataService.productsData);
+});
+
 // Root route
 app.get('/', (req, res) => {
   res.send('Shoplytics API is running');
